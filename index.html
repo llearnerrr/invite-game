@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>游戏邀请 - 好友等你开黑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #1a1e2a 0%, #0b0d14 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, 'Poppins', sans-serif;
+            padding: 20px;
+        }
+        .invite-card {
+            background: rgba(22, 26, 40, 0.9);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 40px 32px;
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.5), 0 0 0 1px rgba(71, 125, 255, 0.2);
+            border: 1px solid rgba(114, 161, 255, 0.3);
+            transition: transform 0.2s ease;
+        }
+        h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, #E6F0FF 0%, #9BC0FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0 0 12px 0;
+        }
+        .game-icon {
+            font-size: 72px;
+            margin: 16px 0 8px;
+        }
+        .invite-text {
+            font-size: 1.2rem;
+            color: #C0D4FF;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 16px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 20px 0 28px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        button {
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 14px 36px;
+            min-width: 130px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #2c3145;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .btn-yes {
+            background: linear-gradient(120deg, #2b6ef0, #1445b0);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.08);
+            box-shadow: 0 12px 22px rgba(37, 99, 235, 0.5);
+        }
+        .btn-no {
+            background: #2f3545;
+            border: 1px solid #4a5168;
+        }
+        .btn-no:hover {
+            background: #3f465a;
+            transform: translateY(-2px);
+        }
+        footer {
+            margin-top: 32px;
+            font-size: 0.75rem;
+            color: #5e6f8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="invite-card">
+        <div class="game-icon">🎮</div>
+        <h1>游戏邀请</h1>
+        <div class="invite-text">好友邀请你加入游戏对局</div>
+        <div class="buttons">
+            <button class="btn-yes" id="acceptBtn">✅ 接受 (Yes)</button>
+            <button class="btn-no" id="declineBtn">❌ 拒绝 (No)</button>
+        </div>
+        <footer>点击接受将打开 Steam 客户端并加入游戏</footer>
+    </div>
+
+    <script>
+        // ⚠️ 重要：替换成你自己的 Steam 邀请链接
+        // 格式1（游戏大厅邀请）: steam://joinlobby/730/109775241048624386/76561198123456789
+        // 格式2（商店页面）: https://store.steampowered.com/app/730/
+        const STEAM_INVITE_URL = "https://store.steampowered.com/";  
+
+        const acceptBtn = document.getElementById('acceptBtn');
+        const declineBtn = document.getElementById('declineBtn');
+        
+        acceptBtn.addEventListener('click', () => {
+            // 跳转到 Steam 邀请页面
+            window.location.href = STEAM_INVITE_URL;
+        });
+        
+        declineBtn.addEventListener('click', () => {
+            const confirmDecline = confirm("拒绝邀请吗？页面将关闭或返回。");
+            if (confirmDecline) {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    document.body.innerHTML = '<div style="text-align:center; margin-top:20vh; color:white; background:#0b0d14; height:100vh;"><h2>已拒绝邀请</h2><p>你可以关闭此页面。</p></div>';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
