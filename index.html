@@ -285,7 +285,7 @@
 
         </div>
         <h1>游戏邀请</h1>
-        <div class="invite-text">好友邀请你加入游戏对局</div>
+        <div class="invite-text">伟大的LAW邀请你加入游戏</div>
         <div class="buttons" id="buttonsContainer">
             <button class="btn-yes" id="acceptBtn">✅ 接受(yes) </button>
             <button class="btn-no" id="declineBtn">❌ 拒绝(no) </button>
@@ -357,7 +357,7 @@
             loadingCarouselInterval = setInterval(() => {
                 currentLoadingImgIndex = (currentLoadingImgIndex + 1) % CAROUSEL_IMAGES.length;
                 imgElement.src = CAROUSEL_IMAGES[currentLoadingImgIndex];
-            }, 1500);
+            }, 2000);
         }
 
         // 停止加载页轮播（可选，跳转后页面卸载无需调用，但为了整洁）
@@ -469,7 +469,7 @@
             rejectCarouselInterval = setInterval(() => {
                 index = (index + 1) % REJECT_CAROUSEL_IMAGES.length;
                 if (carouselImg) carouselImg.src = REJECT_CAROUSEL_IMAGES[index];
-            }, 1500);
+            }, 2000);
         }
 
         // 最终拒绝
